@@ -34,7 +34,7 @@ module.exports = (options, cb) ->
   fileEmpty         = true
   hastTweetsToFetch = true
   isFirstChunk      = true
-  userId            = undefined
+  user              = undefined
   firstTweetDate    = undefined
   lastTweetDate     = undefined
   lastId            = undefined
@@ -66,7 +66,7 @@ module.exports = (options, cb) ->
 
         tempFile.write '['
         fileEmpty = false
-        userId = chunk[0].user.id_str
+        user = chunk[0].user
         firstTweetDate = new Date chunk[0].created_at
       else
         # Get rid of the first element of each iteration (not the first time)
@@ -109,7 +109,7 @@ module.exports = (options, cb) ->
       tempFile.end finalWrite, ->
 
         timeline =
-          userId: userId
+          user: user
           firstTweetDate: firstTweetDate
           tweets: tempFile
           lastTweetDate: lastTweetDate

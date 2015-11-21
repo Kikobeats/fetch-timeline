@@ -19,7 +19,7 @@ request to get more to 200 tweets per call (max to 3200).
 
 This module encasuplate the logic to concatenate the HTTP request an returns you an object with the user tweets data, as:
 
-```json
+```js
 {
   userId: '101198215',
   firstTweetDate: Fri Nov 20 2015 16:40:41 GMT+0100 (CET),

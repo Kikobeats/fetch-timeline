@@ -1,9 +1,14 @@
 'use strict'
+
 Twit           = require 'twit'
 async          = require 'async'
-__             = require 'lodash'
-EventEmitter   = require 'eventemitter3'
+objectAssign   = require 'object-assign'
 tempFileStream = require 'create-temp-file2'
+EventEmitter   = require('events').EventEmitter
+
+isEmpty = (value) ->
+  return true unless value
+  not value.length
 
 # Based in the statuses/user_timeline limitations
 # for more information, check: https://dev.twitter.com/rest/reference/get/statuses/user_timeline
@@ -21,7 +26,7 @@ module.exports = (options, cb) ->
 
   { credentials, params, tempFile } = options
 
-  params = __.assign DEFAULT.PARAMS, params
+  params = objectAssign DEFAULT.PARAMS, params
   params.limit = DEFAULT.limit if params.limit > DEFAULT.limit
 
   twitter = new Twit
@@ -60,7 +65,7 @@ module.exports = (options, cb) ->
         isFirstChunk = false
 
         # Twitter accounts without tweets
-        if __.isEmpty chunk
+        if isEmpty chunk
           hastTweetsToFetch = false
           return next()
 
@@ -74,13 +79,13 @@ module.exports = (options, cb) ->
         chunk.shift()
 
         # Last Tweet Dump
-        if __.isEmpty chunk
+        if isEmpty chunk
           hastTweetsToFetch = false
           return next()
 
         tempFile.write ','
 
-      lastId = __.last(chunk).id_str
+      lastId = chunk[chunk.length - 1].id_str
 
       isFirstTweet = true
 

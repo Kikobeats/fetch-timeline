@@ -20,10 +20,10 @@
     "timeline"
   ],
   "dependencies": {
-    "acho": "latest",
     "async": "latest",
     "coffee-script": "latest",
     "create-temp-file2": "latest",
+    "object-assign": "latest",
     "twit": "latest"
   },
   "devDependencies": {

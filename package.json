@@ -1,0 +1,50 @@
+{
+  "name": "fetch-timeline",
+  "description": "Fetch the timeline of a Twitter user.",
+  "homepage": "https://github.com/Kikobeats/fetch-timeline",
+  "version": "0.0.0",
+  "main": "./index.js",
+  "author": {
+    "email": "josefrancisco.verdu@gmail.com",
+    "name": "Kiko Beats",
+    "url": "https://github.com/Kikobeats"
+  },
+  "repository": "Kikobeats/fetch-timeline",
+  "bugs": {
+    "url": "https://github.com/Kikobeats/fetch-timeline/issues"
+  },
+  "keywords": [
+    "Twitter",
+    "fetch",
+    "user",
+    "timeline"
+  ],
+  "dependencies": {
+    "acho": "latest",
+    "async": "latest",
+    "coffee-script": "latest",
+    "create-temp-file2": "latest",
+    "twit": "latest"
+  },
+  "devDependencies": {
+    "browserify": "latest",
+    "coffee-script": "latest",
+    "coffeeify": "latest",
+    "gulp": "latest",
+    "gulp-header": "latest",
+    "gulp-uglify": "latest",
+    "gulp-util": "latest",
+    "mocha": "latest",
+    "should": "latest",
+    "vinyl-buffer": "latest",
+    "vinyl-source-stream": "latest"
+  },
+  "engines": {
+    "node": ">= 0.10.0",
+    "npm": ">= 1.4.0"
+  },
+  "scripts": {
+    "test": "sh test/test.sh"
+  },
+  "license": "MIT"
+}

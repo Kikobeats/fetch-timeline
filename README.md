@@ -113,15 +113,13 @@ Represents the [twit#credentials](https://github.com/ttezel/twit#var-t--new-twit
 
 Represents the params necessary for setup the Twitter [statuses/usertimeline](https://dev.twitter.com/rest/reference/get/statuses/user_timeline) API requests.
 
-
 #### tempFile
 
 Represents the options to setup the [tempfile2](https://github.com/Kikobeats/tempfile2#api) library used to specify the file path to store the data fetched.
 
 ### Examples
 
-see `example.js`
-
+See [example.js](https://github.com/Kikobeats/fetch-timeline/blob/master/example.js).
 
 ## License
 

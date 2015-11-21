@@ -121,6 +121,10 @@ Represents the options to setup the [tempfile2](https://github.com/Kikobeats/tem
 
 See [example.js](https://github.com/Kikobeats/fetch-timeline/blob/master/example.js).
 
+## Related
+
+- [fetch-timeline-cli](https://github.com/Kikobeats/fetch-timeline-cli) – Fetch the timeline of a Twitter user from your terminal.
+
 ## License
 
 MIT © [Kiko Beats](http://kikobeats.com)

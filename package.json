@@ -2,7 +2,7 @@
   "name": "fetch-timeline",
   "description": "Fetch the timeline of a Twitter user.",
   "homepage": "https://github.com/Kikobeats/fetch-timeline",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "./index.js",
   "author": {
     "email": "josefrancisco.verdu@gmail.com",

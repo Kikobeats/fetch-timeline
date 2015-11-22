@@ -27,17 +27,8 @@
     "twit": "latest"
   },
   "devDependencies": {
-    "browserify": "latest",
-    "coffee-script": "latest",
-    "coffeeify": "latest",
-    "gulp": "latest",
-    "gulp-header": "latest",
-    "gulp-uglify": "latest",
-    "gulp-util": "latest",
     "mocha": "latest",
-    "should": "latest",
-    "vinyl-buffer": "latest",
-    "vinyl-source-stream": "latest"
+    "should": "latest"
   },
   "engines": {
     "node": ">= 0.10.0",

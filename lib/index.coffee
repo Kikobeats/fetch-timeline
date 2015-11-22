@@ -1,7 +1,9 @@
 'use strict'
 
+fs             = require 'fs'
 Twit           = require 'twit'
 async          = require 'async'
+duplexer2      = require 'duplexer2'
 objectAssign   = require 'object-assign'
 tempFileStream = require 'create-temp-file2'
 EventEmitter   = require('events').EventEmitter
@@ -9,6 +11,14 @@ EventEmitter   = require('events').EventEmitter
 isEmpty = (value) ->
   return true unless value
   not value.length
+
+write = (stream, value, cb) ->
+  stream.emit 'data', value
+  stream.write value, cb
+
+end = (stream, value, cb) ->
+  stream.emit 'data', value
+  stream.end value, cb
 
 # Based in the statuses/user_timeline limitations
 # for more information, check: https://dev.twitter.com/rest/reference/get/statuses/user_timeline
@@ -44,10 +54,9 @@ module.exports = (options, cb) ->
   lastTweetDate     = undefined
   lastId            = undefined
 
-  userInfo = params.user_id or params.screen_name
-  userInfo = 'fetching ' + if userInfo then "'#{userInfo}' tweets" else 'tweets'
-
-  tempFile = tempFileStream tempFile
+  writable = tempFileStream tempFile
+  readable = fs.createReadStream writable.path
+  duplex = duplexer2 writable, readable
 
   hasTweets = ->
     return hastTweetsToFetch unless hastTweetsToFetch
@@ -59,8 +68,6 @@ module.exports = (options, cb) ->
     twitter.get 'statuses/user_timeline', params, (err, chunk) ->
       return next err if err
 
-      eventEmitter.emit 'data', chunk
-
       if isFirstChunk
         isFirstChunk = false
 
@@ -69,7 +76,7 @@ module.exports = (options, cb) ->
           hastTweetsToFetch = false
           return next()
 
-        tempFile.write '['
+        write duplex, '['
         fileEmpty = false
         user = chunk[0].user
         firstTweetDate = new Date chunk[0].created_at
@@ -83,7 +90,7 @@ module.exports = (options, cb) ->
           hastTweetsToFetch = false
           return next()
 
-        tempFile.write ','
+        write duplex, ','
 
       lastId = chunk[chunk.length - 1].id_str
 
@@ -94,15 +101,14 @@ module.exports = (options, cb) ->
           hastTweetsToFetch = false
           return nextTweet()
 
-        eventEmitter.emit 'progress', (++tweetsCounter / params.limit) * 100
-
+        ++tweetsCounter
         tweetString = JSON.stringify tweet, null, 2
 
         if isFirstTweet
-          tempFile.write tweetString
+          write duplex, tweetString
           isFirstTweet = false
         else
-          tempFile.write ',' + tweetString
+          write duplex, ',' + tweetString
           lastTweetDate = new Date(tweet.created_at)
 
         nextTweet()
@@ -111,21 +117,21 @@ module.exports = (options, cb) ->
   fetchTimeline = (cb) ->
     async.whilst hasTweets, fetchTweets, (err) ->
       finalWrite = if fileEmpty then '[]' else ']'
-      tempFile.end finalWrite, ->
+      end duplex, finalWrite, ->
 
         timeline =
-          user: user
-          firstTweetDate: firstTweetDate
-          tweets: tempFile
-          lastTweetDate: lastTweetDate
-          size: tweetsCounter
+          user           : user
+          firstTweetDate : firstTweetDate
+          tweets         : writable
+          lastTweetDate  : lastTweetDate
+          size           : tweetsCounter
 
         cb err, timeline
 
   return fetchTimeline cb if cb
 
   fetchTimeline (err, timeline) ->
-    eventEmitter.emit 'error', err if err
-    eventEmitter.emit 'end', timeline
+    duplex.emit 'error', err if err
+    duplex.emit 'fetched', timeline
 
-  eventEmitter
+  duplex

@@ -65,7 +65,7 @@ The events available in this modes are:
 
 #### .on('data')
 
-Fire with each Twitter API HTTP call.
+Fire with each stuff written in the temporal file.
 
 ```js
 fetchTimeline.on('data', console.log);
@@ -73,22 +73,12 @@ fetchTimeline.on('data', console.log);
 
 The chunk contains a sample of tweets that will be part of the final tweets sample.
 
-#### .on('end')
+#### .on('fetched')
 
-Fire at the end of the process and return the same as callback mode.
-
-```js
-fetchTimeline.on('end', console.log);
-```
-
-#### .on('progress')
-
-Fire when the process receive a HTTP response and update the counters to know the state of the process.
-
-The process is a 1 to 100 float number.
+Fire at the end of the algorithm and returns the same object as callback mode.
 
 ```js
-fetchTimeline.on('progress', console.log); // => 59.7
+fetchTimeline.on('fetched', console.log);
 ```
 
 #### .on('error')

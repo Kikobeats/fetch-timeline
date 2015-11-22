@@ -23,6 +23,7 @@
     "async": "latest",
     "coffee-script": "latest",
     "create-temp-file2": "latest",
+    "duplexer2": "latest",
     "object-assign": "latest",
     "twit": "latest"
   },

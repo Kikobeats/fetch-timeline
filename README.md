@@ -1,111 +1,66 @@
 # fetch-timeline
 
 ![Last version](https://img.shields.io/github/tag/Kikobeats/fetch-timeline.svg?style=flat-square)
-[![Build Status](http://img.shields.io/travis/Kikobeats/fetch-timeline/master.svg?style=flat-square)](https://travis-ci.org/Kikobeats/fetch-timeline)
 [![Dependency status](http://img.shields.io/david/Kikobeats/fetch-timeline.svg?style=flat-square)](https://david-dm.org/Kikobeats/fetch-timeline)
 [![Dev Dependencies Status](http://img.shields.io/david/dev/Kikobeats/fetch-timeline.svg?style=flat-square)](https://david-dm.org/Kikobeats/fetch-timeline#info=devDependencies)
 [![NPM Status](http://img.shields.io/npm/dm/fetch-timeline.svg?style=flat-square)](https://www.npmjs.org/package/fetch-timeline)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/Kikobeats)
 
-> Fetch the timeline of a Twitter user.
+> Readable Stream that content tweets fetched from a Twitter user timeline.
+
+Twitter API expose and endpoint called [statuses/usertimeline](https://dev.twitter.com/rest/reference/get/statuses/user_timeline) to get the last Twitter users tweets, but is necessary concat the HTTP
+request to get more to 200 tweets per call (max to 3200).
+
+This module encapsulate the logic to concatenate the HTTP requests.
 
 ## Install
 
 ```bash
 npm install fetch-timeline --save
 ```
-Twitter API expose and endpoint called [statuses/usertimeline](https://dev.twitter.com/rest/reference/get/statuses/user_timeline) to get the last Twitter users tweets, but is necessary concat the HTTP
-request to get more to 200 tweets per call (max to 3200).
-
-This module encasuplate the logic to concatenate the HTTP request an returns you an object with the user tweets data, as:
-
-```js
-{
-  userId: '101198215',
-  firstTweetDate: Fri Nov 20 2015 16:40:41 GMT+0100 (CET),
-  lastTweetDate: Tue Oct 27 2015 21:46:25 GMT+0100 (CET),
-  size: 100
-  tweets: {
-    path: '/var/folders/m0/xgqrbttj0mxg9s1vrcj_ypq00000gn/T/7e0e3ca1-2f3f-46a6-b852-328963391104',
-    cleanup: [Function],
-   cleanupSync: [Function],
-  }
-}
-```
-
-The tweets are stored in a temporal file and the object give you the inmmediate information (total of tweets, userId, Dates related with the first and the last tweet...) to be not necessary load the file, just if you need to handle the tweets data.
 
 ## Usage
 
 ```js
 var fetchTimeline = require('fetch-timeline');
-```
-You can use the library following two different ways:
-
-### Callback Mode
-
-The most plug and play mode:
-
-```js
-fetchTimeline(options, function(err, timeline) {
-  if (err) throw err;
-  console.log(timeline);
-});
+var timeline = fetchTimeline(params, credentials) // => Readable Stream
 ```
 
-### Event Mode
-
-The most powerful mode. It's allow you know the progress of the process and more useful things as even emitters.
-
-```js
-var fetchTimeline = fetchTimeline(options);
-```
-
-The events available in this modes are:
+The events available are:
 
 #### .on('data')
 
-Fire with each stuff written in the temporal file.
-
-```js
-fetchTimeline.on('data', console.log);
-```
-
-The chunk contains a sample of tweets that will be part of the final tweets sample.
+Fire with each tweet fetched from the API endpoint.
 
 #### .on('fetched')
 
-Fire at the end of the algorithm and returns the same object as callback mode.
+Fired at the end of the timeline with information of the fetching process, as:
 
 ```js
-fetchTimeline.on('fetched', console.log);
+{
+  user: {Object},
+  firstTweetDate: {Date},
+  lastTweetDate: {Date},
+  size: {Number}
+}
 ```
 
-#### .on('error')
-
-Fire with whatever process error. Equivalent to `error` param in the callback mode.
-
-```js
-fetchTimeline.on('error', console.log);
-```
+The rest of the readable event (`error`, `end`,...) have the same behavior.
 
 ## API
 
-### fetchTimeline(options)
-
-`options` is a object used to setup the process with different namespaces:
-
-#### credentials
-
-Represents the [twit#credentials](https://github.com/ttezel/twit#var-t--new-twitconfig) to connect with Twitter API.
+### fetchTimeline(params, credentials)
 
 #### params
 
 Represents the params necessary for setup the Twitter [statuses/usertimeline](https://dev.twitter.com/rest/reference/get/statuses/user_timeline) API requests.
 
-#### tempFile
+The library internally manage the cursor between successive API calls.
 
-Represents the options to setup the [tempfile2](https://github.com/Kikobeats/tempfile2#api) library used to specify the file path to store the data fetched.
+#### credentials
+
+Represents the [twit#credentials](https://github.com/ttezel/twit#var-t--new-twitconfig) to connect with Twitter API.
+
 
 ### Examples
 

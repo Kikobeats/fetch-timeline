@@ -1,3 +1,2 @@
-'use strict';
-require('coffee-script/register');
-module.exports = require('./lib');
+'use strict'
+module.exports = require('./lib/fetch')

@@ -1,6 +1,6 @@
 {
   "name": "fetch-timeline",
-  "description": "Fetch the timeline of a Twitter user.",
+  "description": "Readable Stream that content tweets fetched from a Twitter user timeline",
   "homepage": "https://github.com/Kikobeats/fetch-timeline",
   "version": "0.2.0",
   "main": "./index.js",
@@ -20,12 +20,12 @@
     "timeline"
   ],
   "dependencies": {
-    "async": "latest",
-    "coffee-script": "latest",
-    "create-temp-file2": "latest",
-    "duplexer2": "latest",
-    "object-assign": "latest",
-    "twit": "latest"
+    "async.dowhilst": "~0.5.2",
+    "async.eachseries": "~0.5.2",
+    "existential-assign": "~1.2.1",
+    "lodash.restparam": "~3.6.1",
+    "readable-stream": "~2.0.5",
+    "twit": "~2.1.1"
   },
   "devDependencies": {
     "mocha": "latest",

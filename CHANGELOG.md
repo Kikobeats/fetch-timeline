@@ -1,7 +1,19 @@
+<a name="0.3.0"></a>
+# 0.3.0 (2015-12-24)
+
+
+* Add missing keywords ([7a140ff](https://github.com/kikobeats/fetch-timeline/commit/7a140ff))
+* Change example reference ([55b69b0](https://github.com/kikobeats/fetch-timeline/commit/55b69b0))
+* Delete unnecessary stuff ([26019b0](https://github.com/kikobeats/fetch-timeline/commit/26019b0))
+* Total refactor ([0aad3be](https://github.com/kikobeats/fetch-timeline/commit/0aad3be))
+
+
+
 <a name="0.2.0"></a>
 # 0.2.0 (2015-11-22)
 
 
+* 0.2.0 release ([c443f9f](https://github.com/kikobeats/fetch-timeline/commit/c443f9f))
 * little refactor ([35b7d3b](https://github.com/kikobeats/fetch-timeline/commit/35b7d3b))
 * updated ([9776401](https://github.com/kikobeats/fetch-timeline/commit/9776401))
 * updated dependencies ([541854c](https://github.com/kikobeats/fetch-timeline/commit/541854c))

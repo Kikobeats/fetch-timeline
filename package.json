@@ -14,10 +14,12 @@
     "url": "https://github.com/Kikobeats/fetch-timeline/issues"
   },
   "keywords": [
+    "Readable",
+    "Stream",
     "Twitter",
     "fetch",
-    "user",
-    "timeline"
+    "timeline",
+    "user"
   ],
   "dependencies": {
     "async.dowhilst": "~0.5.2",

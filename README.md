@@ -64,7 +64,7 @@ Represents the [twit#credentials](https://github.com/ttezel/twit#var-t--new-twit
 
 ### Examples
 
-See [example.js](https://github.com/Kikobeats/fetch-timeline/blob/master/example.js).
+See [fetch-timelie-cli#bin](https://github.com/Kikobeats/fetch-timeline-cli/blob/master/bin/index.js#L116-L146).
 
 ## Related
 

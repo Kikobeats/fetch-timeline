@@ -39,8 +39,8 @@ Fired at the end of the timeline with information of the fetching process, as:
 ```js
 {
   user: {Object},
-  firstTweetDate: {Date},
-  lastTweetDate: {Date},
+  newerTweetDate: {Date},
+  olderTweetDate: {Date},
   size: {Number}
 }
 ```

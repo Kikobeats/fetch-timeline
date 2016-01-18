@@ -1,7 +1,21 @@
+<a name="0.3.1"></a>
+## 0.3.1 (2016-01-18)
+
+
+### chore
+
+* chore(package): update existential-assign to version 1.2.2 ([f96b2d2](https://github.com/kikobeats/fetch-timeline/commit/f96b2d2))
+
+* Merge pull request #1 from Kikobeats/greenkeeper-existential-assign-1.2.2 ([ba0c0fb](https://github.com/kikobeats/fetch-timeline/commit/ba0c0fb))
+* Rename variables ([d8c1142](https://github.com/kikobeats/fetch-timeline/commit/d8c1142))
+
+
+
 <a name="0.3.0"></a>
 # 0.3.0 (2015-12-24)
 
 
+* 0.3.0 release ([d30c459](https://github.com/kikobeats/fetch-timeline/commit/d30c459))
 * Add missing keywords ([7a140ff](https://github.com/kikobeats/fetch-timeline/commit/7a140ff))
 * Change example reference ([55b69b0](https://github.com/kikobeats/fetch-timeline/commit/55b69b0))
 * Delete unnecessary stuff ([26019b0](https://github.com/kikobeats/fetch-timeline/commit/26019b0))

@@ -1,3 +1,13 @@
+<a name="0.3.2"></a>
+## 0.3.2 (2016-01-28)
+
+
+* Add tests ([6cf0d21](https://github.com/kikobeats/fetch-timeline/commit/6cf0d21))
+* Fix default params ([01391fb](https://github.com/kikobeats/fetch-timeline/commit/01391fb))
+* Fix stream EOF error ([862aa0d](https://github.com/kikobeats/fetch-timeline/commit/862aa0d))
+
+
+
 <a name="0.3.1"></a>
 ## 0.3.1 (2016-01-18)
 
@@ -6,6 +16,7 @@
 
 * chore(package): update existential-assign to version 1.2.2 ([f96b2d2](https://github.com/kikobeats/fetch-timeline/commit/f96b2d2))
 
+* 0.3.1 release ([b8287b1](https://github.com/kikobeats/fetch-timeline/commit/b8287b1))
 * Merge pull request #1 from Kikobeats/greenkeeper-existential-assign-1.2.2 ([ba0c0fb](https://github.com/kikobeats/fetch-timeline/commit/ba0c0fb))
 * Rename variables ([d8c1142](https://github.com/kikobeats/fetch-timeline/commit/d8c1142))
 
@@ -39,10 +50,10 @@
 
 
 * 0.1.0 release ([fbd6a6a](https://github.com/kikobeats/fetch-timeline/commit/fbd6a6a))
+* Update README.md ([e920507](https://github.com/kikobeats/fetch-timeline/commit/e920507))
 * first commit ([5303592](https://github.com/kikobeats/fetch-timeline/commit/5303592))
 * improve user information ([02bcaaa](https://github.com/kikobeats/fetch-timeline/commit/02bcaaa))
 * no browser versiona available ([29fc69f](https://github.com/kikobeats/fetch-timeline/commit/29fc69f))
-* Update README.md ([e920507](https://github.com/kikobeats/fetch-timeline/commit/e920507))
 * updated ([9c034b0](https://github.com/kikobeats/fetch-timeline/commit/9c034b0))
 * updated bumped settings ([a8c3eb6](https://github.com/kikobeats/fetch-timeline/commit/a8c3eb6))
 * updated dependencies to use ([1e9d438](https://github.com/kikobeats/fetch-timeline/commit/1e9d438))

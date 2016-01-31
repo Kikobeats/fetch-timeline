@@ -23,7 +23,7 @@
   ],
   "dependencies": {
     "existential-assign": "~1.2.2",
-    "twit": "~2.1.7",
+    "twit": "~2.2.0",
     "from2": "~2.1.1"
   },
   "devDependencies": {

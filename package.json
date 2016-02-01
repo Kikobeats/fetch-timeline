@@ -22,7 +22,7 @@
     "user"
   ],
   "dependencies": {
-    "existential-assign": "~1.2.2",
+    "existential-default": "~1.1.0",
     "twit": "~2.2.1",
     "from2": "~2.1.1"
   },

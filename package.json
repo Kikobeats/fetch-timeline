@@ -2,14 +2,17 @@
   "name": "fetch-timeline",
   "description": "Readable Stream that content tweets fetched from a Twitter user timeline",
   "homepage": "https://github.com/Kikobeats/fetch-timeline",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "main": "./index.js",
   "author": {
-    "email": "josefrancisco.verdu@gmail.com",
     "name": "Kiko Beats",
+    "email": "josefrancisco.verdu@gmail.com",
     "url": "https://github.com/Kikobeats"
   },
-  "repository": "Kikobeats/fetch-timeline",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kikobeats/fetch-timeline.git"
+  },
   "bugs": {
     "url": "https://github.com/Kikobeats/fetch-timeline/issues"
   },

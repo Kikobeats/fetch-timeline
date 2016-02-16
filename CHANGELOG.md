@@ -1,3 +1,15 @@
+<a name="0.3.4"></a>
+## 0.3.4 (2016-02-16)
+
+
+### chore
+
+* chore(package): update existential-default to version 1.1.2 ([5bd49a3](https://github.com/kikobeats/fetch-timeline/commit/5bd49a3))
+
+* Merge pull request #11 from Kikobeats/greenkeeper-existential-default-1.1.2 ([4bb348d](https://github.com/kikobeats/fetch-timeline/commit/4bb348d))
+
+
+
 <a name="0.3.3"></a>
 ## 0.3.3 (2016-02-02)
 
@@ -13,9 +25,10 @@
 * Merge pull request #5 from Kikobeats/greenkeeper-twit-2.1.7 ([33a1e31](https://github.com/kikobeats/fetch-timeline/commit/33a1e31))
 * Merge pull request #7 from Kikobeats/greenkeeper-twit-2.2.1 ([37a80bb](https://github.com/kikobeats/fetch-timeline/commit/37a80bb))
 * Merge pull request #9 from Kikobeats/greenkeeper-twit-2.2.2 ([eb87c66](https://github.com/kikobeats/fetch-timeline/commit/eb87c66))
+* Release 0.3.3 ([bce928d](https://github.com/kikobeats/fetch-timeline/commit/bce928d))
 * Update bumped settings ([7c154e3](https://github.com/kikobeats/fetch-timeline/commit/7c154e3))
-* update deps ([000c30a](https://github.com/kikobeats/fetch-timeline/commit/000c30a))
 * Use existsDefault instead of existsAssign ([56f4236](https://github.com/kikobeats/fetch-timeline/commit/56f4236))
+* update deps ([000c30a](https://github.com/kikobeats/fetch-timeline/commit/000c30a))
 
 
 
@@ -72,10 +85,10 @@
 
 
 * 0.1.0 release ([fbd6a6a](https://github.com/kikobeats/fetch-timeline/commit/fbd6a6a))
+* Update README.md ([e920507](https://github.com/kikobeats/fetch-timeline/commit/e920507))
 * first commit ([5303592](https://github.com/kikobeats/fetch-timeline/commit/5303592))
 * improve user information ([02bcaaa](https://github.com/kikobeats/fetch-timeline/commit/02bcaaa))
 * no browser versiona available ([29fc69f](https://github.com/kikobeats/fetch-timeline/commit/29fc69f))
-* Update README.md ([e920507](https://github.com/kikobeats/fetch-timeline/commit/e920507))
 * updated ([9c034b0](https://github.com/kikobeats/fetch-timeline/commit/9c034b0))
 * updated bumped settings ([a8c3eb6](https://github.com/kikobeats/fetch-timeline/commit/a8c3eb6))
 * updated dependencies to use ([1e9d438](https://github.com/kikobeats/fetch-timeline/commit/1e9d438))

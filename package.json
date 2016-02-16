@@ -2,7 +2,7 @@
   "name": "fetch-timeline",
   "description": "Readable Stream that content tweets fetched from a Twitter user timeline",
   "homepage": "https://github.com/Kikobeats/fetch-timeline",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "main": "./index.js",
   "author": {
     "name": "Kiko Beats",

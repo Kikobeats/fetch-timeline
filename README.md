@@ -28,7 +28,7 @@ var timeline = fetchTimeline(params, credentials) // => Readable Stream
 
 The events available are:
 
-#### .on('data')
+#### .on('data')
 
 Fire with each tweet fetched from the API endpoint.
 

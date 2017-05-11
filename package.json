@@ -3,7 +3,7 @@
   "description": "Readable Stream that content tweets fetched from a Twitter user timeline",
   "homepage": "https://github.com/Kikobeats/fetch-timeline",
   "version": "0.3.4",
-  "main": "./index.js",
+  "main": "./lib/fetch.js",
   "author": {
     "name": "Kiko Beats",
     "email": "josefrancisco.verdu@gmail.com",
@@ -29,16 +29,32 @@
     "from2": "~2.3.0",
     "twit": "~2.2.4"
   },
+  "files": [
+    "lib"
+  ],
   "devDependencies": {
     "mocha": "latest",
-    "should": "latest"
+    "should": "latest",
+    "standard": "latest",
+    "standard-markdown": "latest",
+    "nyc": "latest",
+    "coveralls": "latest"
   },
   "engines": {
     "node": ">= 4",
     "npm": ">= 1.4.0"
   },
   "scripts": {
-    "test": "mocha"
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "lint": "standard-markdown && standard",
+    "pretest": "npm run lint && npm run build",
+    "test": "nyc mocha"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "it"
+    ]
   },
   "license": "MIT"
 }

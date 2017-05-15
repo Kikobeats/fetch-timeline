@@ -1,51 +1,91 @@
-/* global describe, it */
-
 'use strict'
 
-var should = require('should')
-var fetchTimeline = require('..')
+const concat = require('concat-stream')
+const should = require('should')
 
-var credentials = {
+const twitterClient = require('../lib/twitter-client')
+const fetchTimeline = require('..')
+
+const credentials = {
   consumerKey: process.env.TWITTER_CONSUMER_KEY,
   consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
   accessToken: process.env.TWITTER_ACCESS_TOKEN,
   accessTokenSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 }
 
-describe('fetch-timeline ::', function () {
-  it('retrieve the correct number of tweets specified in limit', function (done) {
-    var timeline = fetchTimeline({
-      limit: 100
-    }, credentials)
+const logTweet = (tweet, index) => {
+  console.log(`#${++index} ${tweet.id} ${tweet.text}`)
+}
 
-    var count = 0
+describe('fetch-timeline', function () {
+  describe('twitter-client', function () {
+    it('default params', function () {
+      const params = twitterClient.setupParams()
+      should(params).be.eql({})
+    })
 
-    timeline
-      .on('data', function () {
-        ++count
+    it('custom params', function () {
+      const params = twitterClient.setupParams({
+        includeRts: true,
+        maxId: 1234
       })
-      .on('end', function () {
-        count.should.be.equal(100)
-        done()
+
+      should(params).be.eql({
+        include_rts: true,
+        max_id: 1234
       })
-      .on('err', done)
+    })
   })
 
-  it('fetch obj shoul be correct', function (done) {
-    var timeline = fetchTimeline({
-      limit: 100
-    }, credentials)
+  describe('fetch', function () {
+    it('Limit how max tweets to retrieve', function (done) {
+      const params = {
+        screenName: 'kikobeats',
+        includeRts: true,
+        excludeReplies: true,
+        count: 200
+      }
 
-    timeline
-      // necessary to be possible acces to rs stream
+      const opts = {
+        credentials,
+        limit: Infinity
+      }
+
+      const stream = fetchTimeline(params, opts)
+
+      stream.on('error', done)
+
+      stream.pipe(concat(function (buffer) {
+        buffer.forEach(logTweet)
+        should(buffer.length).be.lessThan(opts.limit)
+        done()
+      }))
+    })
+
+    it('object fecthed is correct', function (done) {
+      const params = {
+        screenName: 'kikobeats',
+        count: 2
+      }
+
+      const opts = {
+        credentials,
+        limit: 4
+      }
+
+      const stream = fetchTimeline(params, opts)
+
+      stream
+      .on('error', done)
       .on('data', function () {})
-      .on('err', done)
-      .on('fetched', function (fetched) {
-        fetched.should.have.property.user
-        fetched.should.have.property.calls
-        fetched.should.have.property.newerTweetDate
-        fetched.should.have.property.olderTweetDate
+      .on('info', function (meta) {
+        should(meta).have.property('user')
+        should(meta).have.property('apiCalls')
+        should(meta).have.property('count')
+        should(meta).have.property('newerTweetDate')
+        should(meta).have.property('olderTweetDate')
         done()
       })
+    })
   })
 })

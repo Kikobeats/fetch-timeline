@@ -1,6 +1,6 @@
 {
   "name": "fetch-timeline",
-  "description": "Readable Stream that content tweets fetched from a Twitter user timeline",
+  "description": "Fetch Twitter user timeline using a readable stream",
   "homepage": "https://github.com/Kikobeats/fetch-timeline",
   "version": "0.3.4",
   "main": "./lib/fetch.js",
@@ -25,30 +25,33 @@
     "user"
   ],
   "dependencies": {
-    "existential-default": "~1.3.1",
+    "debug": "~2.6.6",
     "from2": "~2.3.0",
+    "lodash.pick": "~4.4.0",
+    "lodash.reduce": "~4.6.0",
+    "lodash.snakecase": "~4.1.1",
     "twit": "~2.2.4"
   },
   "files": [
     "lib"
   ],
   "devDependencies": {
+    "concat-stream": "~1.6.0",
+    "coveralls": "latest",
     "mocha": "latest",
+    "nyc": "latest",
     "should": "latest",
     "standard": "latest",
-    "standard-markdown": "latest",
-    "nyc": "latest",
-    "coveralls": "latest"
+    "standard-markdown": "latest"
   },
   "engines": {
-    "node": ">= 4",
-    "npm": ">= 1.4.0"
+    "node": ">= 6"
   },
   "scripts": {
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "standard-markdown && standard",
-    "pretest": "npm run lint && npm run build",
-    "test": "nyc mocha"
+    "pretest": "npm run lint",
+    "test": "DEBUG=fetch-timeline nyc mocha"
   },
   "standard": {
     "globals": [

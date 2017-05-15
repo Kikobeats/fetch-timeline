@@ -1,12 +1,15 @@
 # fetch-timeline
 
 ![Last version](https://img.shields.io/github/tag/Kikobeats/fetch-timeline.svg?style=flat-square)
-[![Dependency status](http://img.shields.io/david/Kikobeats/fetch-timeline.svg?style=flat-square)](https://david-dm.org/Kikobeats/fetch-timeline)
-[![Dev Dependencies Status](http://img.shields.io/david/dev/Kikobeats/fetch-timeline.svg?style=flat-square)](https://david-dm.org/Kikobeats/fetch-timeline#info=devDependencies)
-[![NPM Status](http://img.shields.io/npm/dm/fetch-timeline.svg?style=flat-square)](https://www.npmjs.org/package/fetch-timeline)
+[![Build Status](https://img.shields.io/travis/Kikobeats/fetch-timeline/master.svg?style=flat-square)](https://travis-ci.org/Kikobeats/fetch-timeline)
+[![Coverage Status](https://img.shields.io/coveralls/Kikobeats/fetch-timeline.svg?style=flat-square)](https://coveralls.io/github/Kikobeats/fetch-timeline)
+[![Dependency status](https://img.shields.io/david/Kikobeats/fetch-timeline.svg?style=flat-square)](https://david-dm.org/Kikobeats/fetch-timeline)
+[![Dev Dependencies Status](https://img.shields.io/david/dev/Kikobeats/fetch-timeline.svg?style=flat-square)](https://david-dm.org/Kikobeats/fetch-timeline#info=devDependencies)
+[![NPM Status](https://img.shields.io/npm/dm/fetch-timeline.svg?style=flat-square)](https://www.npmjs.org/package/fetch-timeline)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/Kikobeats)
 
-> Readable Stream that content tweets fetched from a Twitter user timeline.
+
+> Fetch Twitter user timeline using a readable stream.
 
 Twitter API expose and endpoint called [statuses/usertimeline](https://dev.twitter.com/rest/reference/get/statuses/user_timeline) to get the last Twitter users tweets, but is necessary concat the HTTP
 request to get more to 200 tweets per call (max to 3200).
@@ -22,8 +25,28 @@ npm install fetch-timeline --save
 ## Usage
 
 ```js
-var fetchTimeline = require('fetch-timeline');
-var timeline = fetchTimeline(params, credentials) // => Readable Stream
+const fetchTimeline = require('fetch-timeline')
+
+const params = {
+  screenName: 'kikobeats',
+  count: 200
+}
+
+const opts = {
+  credentials: {
+    consumerKey: process.env.TWITTER_CONSUMER_KEY,
+    consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
+    accessToken: process.env.TWITTER_ACCESS_TOKEN,
+    accessTokenSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+  },
+  limit: 3200
+}
+
+const stream = fetchTimeline(params, opts) // => Readable Stream
+
+stream.on('data', (tweet, index) => {
+  console.log(`#${++index} ${tweet.text}`)
+})
 ```
 
 The events available are:
@@ -32,39 +55,50 @@ The events available are:
 
 Fire with each tweet fetched from the API endpoint.
 
-#### .on('fetched')
+#### .on('info')
 
-Fired at the end of the timeline with information of the fetching process, as:
+Fired at the end of the timeline fetch process with meta information, such as:
 
-```js
+```json
 {
-  user: {Object},
-  newerTweetDate: {Date},
-  olderTweetDate: {Date},
-  size: {Number}
+  "user": "Object",
+  "apiCalls": "Number",
+  "count": "Number",
+  "newerTweetDate": "Date",
+  "olderTweetDate": "Date",
 }
 ```
 
-The rest of the readable event (`error`, `end`,...) have the same behavior.
+The rest of the readable event (`error`, `end`,...) have the expected behavior.
 
 ## API
 
-### fetchTimeline(params, credentials)
+### fetchTimeline(params, opts)
 
 #### params
 
-Represents the params necessary for setup the Twitter [statuses/usertimeline](https://dev.twitter.com/rest/reference/get/statuses/user_timeline) API requests.
+Represents the params necessary for setup the Twitter endpoint [statuses/usertimeline](https://dev.twitter.com/rest/reference/get/statuses/user_timeline) for the API requests.
+
+You need to specify the params using camelCase instead of snakeCase.
 
 The library internally manage the cursor between successive API calls.
 
-#### credentials
+#### opts
+
+##### credentials
+Type: `object`
+
 
 Represents the [twit#credentials](https://github.com/ttezel/twit#var-t--new-twitconfig) to connect with Twitter API.
 
+##### limit
+Type: `number`
+
+Use this value when you want to finish the process early, limiting the number of tweets to be fetched.
 
 ### Examples
 
-See [fetch-timelie-cli#bin](https://github.com/Kikobeats/fetch-timeline-cli/blob/master/bin/index.js#L116-L146).
+See [fetch-timeline-cli#bin](https://github.com/Kikobeats/fetch-timeline-cli/blob/master/bin/index.js#L116-L146).
 
 ## Related
 

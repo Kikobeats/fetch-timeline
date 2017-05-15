@@ -1,3 +1,26 @@
+<a name="1.0.0"></a>
+# 1.0.0 (2017-05-15)
+
+* Fix typo ([e655185](https://github.com/kikobeats/fetch-timeline/commit/e655185))
+* Fix typos ([449b691](https://github.com/kikobeats/fetch-timeline/commit/449b691))
+* Refactor ([96957df](https://github.com/kikobeats/fetch-timeline/commit/96957df))
+* Update metadata ([1ab33c2](https://github.com/kikobeats/fetch-timeline/commit/1ab33c2))
+* Update README.md ([aa93ba3](https://github.com/kikobeats/fetch-timeline/commit/aa93ba3))
+* chore: drop support for Node.js 0.10 ([4949dd5](https://github.com/kikobeats/fetch-timeline/commit/4949dd5))
+* chore(package): update existential-default to version 1.1.3 ([20896a5](https://github.com/kikobeats/fetch-timeline/commit/20896a5))
+* chore(package): update existential-default to version 1.2.1 ([0f0894b](https://github.com/kikobeats/fetch-timeline/commit/0f0894b))
+* chore(package): update existential-default to version 1.3.1 ([1bcf966](https://github.com/kikobeats/fetch-timeline/commit/1bcf966))
+* chore(package): update from2 to version 2.2.0 ([78e1625](https://github.com/kikobeats/fetch-timeline/commit/78e1625))
+* chore(package): update from2 to version 2.3.0 ([c7f478e](https://github.com/kikobeats/fetch-timeline/commit/c7f478e))
+* chore(package): update twit to version 2.2.3 ([57194d5](https://github.com/kikobeats/fetch-timeline/commit/57194d5))
+* chore(package): update twit to version 2.2.4 ([7c151a6](https://github.com/kikobeats/fetch-timeline/commit/7c151a6))
+
+
+### BREAKING CHANGE
+
+* This module no longer supports Node.js 0.10
+
+
 <a name="0.3.4"></a>
 ## 0.3.4 (2016-02-16)
 

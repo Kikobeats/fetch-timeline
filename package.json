@@ -2,11 +2,11 @@
   "name": "fetch-timeline",
   "description": "Fetch Twitter user timeline using a readable stream",
   "homepage": "https://github.com/Kikobeats/fetch-timeline",
-  "version": "0.3.4",
+  "version": "1.0.0",
   "main": "./lib/fetch.js",
   "author": {
-    "name": "Kiko Beats",
     "email": "josefrancisco.verdu@gmail.com",
+    "name": "Kiko Beats",
     "url": "https://github.com/Kikobeats"
   },
   "repository": {
@@ -32,9 +32,6 @@
     "lodash.snakecase": "~4.1.1",
     "twit": "~2.2.4"
   },
-  "files": [
-    "lib"
-  ],
   "devDependencies": {
     "concat-stream": "~1.6.0",
     "coveralls": "latest",
@@ -47,17 +44,20 @@
   "engines": {
     "node": ">= 6"
   },
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "standard-markdown && standard",
     "pretest": "npm run lint",
     "test": "DEBUG=fetch-timeline nyc mocha"
   },
+  "license": "MIT",
   "standard": {
     "globals": [
       "describe",
       "it"
     ]
-  },
-  "license": "MIT"
+  }
 }

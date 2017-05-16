@@ -1,3 +1,12 @@
+<a name="1.1.0"></a>
+# 1.1.0 (2017-05-16)
+
+* Add limitDays ([b85e78f](https://github.com/kikobeats/fetch-timeline/commit/b85e78f))
+* Add test ([6d50a6d](https://github.com/kikobeats/fetch-timeline/commit/6d50a6d))
+* Little refactor ([223207a](https://github.com/kikobeats/fetch-timeline/commit/223207a))
+
+
+
 <a name="1.0.0"></a>
 # 1.0.0 (2017-05-15)
 

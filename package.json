@@ -25,6 +25,7 @@
     "user"
   ],
   "dependencies": {
+    "date-fns": "~1.28.4",
     "debug": "~2.6.6",
     "from2": "~2.3.0",
     "lodash.pick": "~4.4.0",
@@ -33,7 +34,6 @@
     "twit": "~2.2.4"
   },
   "devDependencies": {
-    "concat-stream": "~1.6.0",
     "coveralls": "latest",
     "mocha": "latest",
     "nyc": "latest",

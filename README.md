@@ -39,7 +39,8 @@ const opts = {
     accessToken: process.env.TWITTER_ACCESS_TOKEN,
     accessTokenSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET
   },
-  limit: 3200
+  limit: 3200,
+  limitDays: 7
 }
 
 const stream = fetchTimeline(params, opts) // => Readable Stream
@@ -90,6 +91,11 @@ Type: `object`
 
 
 Represents the [twit#credentials](https://github.com/ttezel/twit#var-t--new-twitconfig) to connect with Twitter API.
+
+##### limitDays
+Type: `number`
+
+Don't retrieve more older tweets than the number of days using `Date.now()` as baseline.
 
 ##### limit
 Type: `number`

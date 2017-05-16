@@ -73,6 +73,50 @@ describe('fetch-timeline', function () {
 
     it('limit how many tweets to retrieve in days', function (done) {
       const limitDays = 2
+
+      const params = {
+        screenName: 'kikobeats',
+        count: 20
+      }
+
+      const opts = {
+        credentials,
+        limitDays
+      }
+
+      let meta = {}
+      let count = 0
+
+      const stream = fetchTimeline(params, opts)
+
+      stream
+      .on('error', done)
+      .on('data', function (tweet) {
+        if (count === 0) {
+          meta.newerTweetDate = new Date(tweet.created_at)
+        }
+
+        ++count
+        meta.user = tweet.user
+        meta.olderTweetDate = new Date(tweet.created_at)
+      })
+      .on('info', function (info) {
+        const diffDays = differenceInDays(
+          Date.now(),
+          info.olderTweetDate
+        )
+
+        should(diffDays).be.equal(limitDays)
+        should(info.user).be.eql(meta.user)
+        should(info.apiCalls).be.equal(2)
+        should(info.newerTweetDate).be.eql(meta.newerTweetDate)
+        should(info.olderTweetDate).be.eql(meta.olderTweetDate)
+        done()
+      })
+    })
+
+    it('combine limit and limitDays', function (done) {
+      const limitDays = 2
       const limit = 30
 
       const params = {

@@ -72,11 +72,11 @@ describe('fetch-timeline', function () {
     })
 
     it('limit how many tweets to retrieve in days', function (done) {
-      const limitDays = 2
+      const limitDays = 7
 
       const params = {
         screenName: 'kikobeats',
-        count: 20
+        count: 200
       }
 
       const opts = {
@@ -101,27 +101,29 @@ describe('fetch-timeline', function () {
         meta.olderTweetDate = new Date(tweet.created_at)
       })
       .on('info', function (info) {
+        should(info.user).be.eql(meta.user)
+        should(info.newerTweetDate).be.eql(meta.newerTweetDate)
+        should(info.olderTweetDate).be.eql(meta.olderTweetDate)
+        should(info.apiCalls).be.equal(1)
+
         const diffDays = differenceInDays(
-          Date.now(),
+          info.timestamp,
           info.olderTweetDate
         )
 
-        should(diffDays).be.equal(limitDays)
-        should(info.user).be.eql(meta.user)
-        should(info.apiCalls).be.equal(2)
-        should(info.newerTweetDate).be.eql(meta.newerTweetDate)
-        should(info.olderTweetDate).be.eql(meta.olderTweetDate)
+        should(diffDays + 1).be.equal(limitDays)
+
         done()
       })
     })
 
-    it('combine limit and limitDays', function (done) {
+    it.only('combine limit and limitDays', function (done) {
       const limitDays = 2
       const limit = 30
 
       const params = {
         screenName: 'kikobeats',
-        count: 20
+        count: 200
       }
 
       const opts = {
@@ -147,18 +149,18 @@ describe('fetch-timeline', function () {
         meta.olderTweetDate = new Date(tweet.created_at)
       })
       .on('info', function (info) {
+        should(info.user).be.eql(meta.user)
+        should(info.apiCalls).be.equal(1)
+        should(info.newerTweetDate).be.eql(meta.newerTweetDate)
+        should(info.olderTweetDate).be.eql(meta.olderTweetDate)
+
         const diffDays = differenceInDays(
-          Date.now(),
+          info.timestamp,
           info.olderTweetDate
         )
 
-        should(diffDays).be.equal(limitDays)
+        should(diffDays + 1).be.equal(limitDays)
         should(info.count <= limit).be.true()
-
-        should(info.user).be.eql(meta.user)
-        should(info.apiCalls).be.equal(2)
-        should(info.newerTweetDate).be.eql(meta.newerTweetDate)
-        should(info.olderTweetDate).be.eql(meta.olderTweetDate)
         done()
       })
     })

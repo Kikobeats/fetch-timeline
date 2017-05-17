@@ -1,3 +1,12 @@
+<a name="1.1.1"></a>
+## 1.1.1 (2017-05-17)
+
+* Ensure tweets is not empty ([b9b37cf](https://github.com/kikobeats/fetch-timeline/commit/b9b37cf))
+* More simple ([0304654](https://github.com/kikobeats/fetch-timeline/commit/0304654))
+* Use 64 integer for pagination ([833594d](https://github.com/kikobeats/fetch-timeline/commit/833594d))
+
+
+
 <a name="1.1.0"></a>
 # 1.1.0 (2017-05-16)
 

@@ -35,6 +35,8 @@ describe('fetch-timeline', function () {
 
   describe('fetch', function () {
     it('limit how many tweets to retrieve', function (done) {
+      const limit = 30
+
       const params = {
         screenName: 'kikobeats',
         count: 20
@@ -42,7 +44,7 @@ describe('fetch-timeline', function () {
 
       const opts = {
         credentials,
-        limit: 30
+        limit
       }
 
       let meta = {}
@@ -62,9 +64,11 @@ describe('fetch-timeline', function () {
         meta.olderTweetDate = new Date(tweet.created_at)
       })
       .on('info', function (info) {
+        should(info.count).be.equal(limit)
+        should(count).be.equal(limit)
+
         should(info.user).be.eql(meta.user)
         should(info.apiCalls).be.equal(2)
-        should(info.count).be.equal(count)
         should(info.newerTweetDate).be.eql(meta.newerTweetDate)
         should(info.olderTweetDate).be.eql(meta.olderTweetDate)
         done()
@@ -117,7 +121,7 @@ describe('fetch-timeline', function () {
       })
     })
 
-    it.only('combine limit and limitDays', function (done) {
+    it('combine limit and limitDays', function (done) {
       const limitDays = 2
       const limit = 30
 

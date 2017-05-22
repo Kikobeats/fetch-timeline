@@ -1,3 +1,10 @@
+<a name="1.1.2"></a>
+## 1.1.2 (2017-05-22)
+
+* Setup newerTweetDate correctly ([40e7e75](https://github.com/kikobeats/fetch-timeline/commit/40e7e75))
+
+
+
 <a name="1.1.1"></a>
 ## 1.1.1 (2017-05-17)
 

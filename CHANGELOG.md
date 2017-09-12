@@ -1,3 +1,13 @@
+<a name="1.1.3"></a>
+## 1.1.3 (2017-09-12)
+
+* Update deps ([1e17149](https://github.com/kikobeats/fetch-timeline/commit/1e17149))
+* Update README.md ([f763f44](https://github.com/kikobeats/fetch-timeline/commit/f763f44))
+* fix(package): update debug to version 3.0.0 ([a000673](https://github.com/kikobeats/fetch-timeline/commit/a000673))
+* docs(readme): add Greenkeeper badge ([e2656fc](https://github.com/kikobeats/fetch-timeline/commit/e2656fc))
+
+
+
 <a name="1.1.2"></a>
 ## 1.1.2 (2017-05-22)
 

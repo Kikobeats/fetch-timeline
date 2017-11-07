@@ -1,3 +1,12 @@
+<a name="1.1.4"></a>
+## 1.1.4 (2017-11-07)
+
+* Add lodash dependency ([57ce96a](https://github.com/kikobeats/fetch-timeline/commit/57ce96a))
+* fix(package): update date-fns to version 1.29.0 ([636aa66](https://github.com/kikobeats/fetch-timeline/commit/636aa66))
+* fix(package): update debug to version 3.1.0 ([fdee8a6](https://github.com/kikobeats/fetch-timeline/commit/fdee8a6))
+
+
+
 <a name="1.1.3"></a>
 ## 1.1.3 (2017-09-12)
 

@@ -109,6 +109,7 @@ See [fetch-timeline-cli#bin](https://github.com/Kikobeats/fetch-timeline-cli/blo
 ## Related
 
 - [fetch-timeline-cli](https://github.com/Kikobeats/fetch-timeline-cli) – Fetch the timeline of a Twitter user from your terminal.
+- [tweets-microservice](https://github.com/Kikobeats/tweets-microservice) – Twitter timeline fetcher as service.
 
 ## License
 

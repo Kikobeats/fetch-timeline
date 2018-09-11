@@ -26,7 +26,7 @@
   ],
   "dependencies": {
     "date-fns": "~1.29.0",
-    "debug": "~3.1.0",
+    "debug": "~3.2.1",
     "from2": "~2.3.0",
     "lodash": "~4.17.4",
     "twit": "~2.2.9"

@@ -36,7 +36,7 @@
     "mocha": "latest",
     "nyc": "latest",
     "should": "latest",
-    "standard": "latest",
+    "standard": "11",
     "standard-markdown": "latest"
   },
   "engines": {
@@ -47,7 +47,7 @@
   ],
   "scripts": {
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "lint": "standard-markdown && standard",
+    "lint": "standard-markdown README.md && standard",
     "pretest": "npm run lint",
     "test": "DEBUG=fetch-timeline nyc mocha"
   },

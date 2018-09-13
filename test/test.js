@@ -53,26 +53,26 @@ describe('fetch-timeline', function () {
       const stream = fetchTimeline(params, opts)
 
       stream
-      .on('error', done)
-      .on('data', function (tweet) {
-        if (count === 0) {
-          meta.newerTweetDate = new Date(tweet.created_at)
-        }
+        .on('error', done)
+        .on('data', function (tweet) {
+          if (count === 0) {
+            meta.newerTweetDate = new Date(tweet.created_at)
+          }
 
-        ++count
-        meta.user = tweet.user
-        meta.olderTweetDate = new Date(tweet.created_at)
-      })
-      .on('info', function (info) {
-        should(info.count).be.equal(limit)
-        should(count).be.equal(limit)
+          ++count
+          meta.user = tweet.user
+          meta.olderTweetDate = new Date(tweet.created_at)
+        })
+        .on('info', function (info) {
+          should(info.count).be.equal(limit)
+          should(count).be.equal(limit)
 
-        should(info.user).be.eql(meta.user)
-        should(info.apiCalls).be.equal(2)
-        should(info.newerTweetDate).be.eql(meta.newerTweetDate)
-        should(info.olderTweetDate).be.eql(meta.olderTweetDate)
-        done()
-      })
+          should(info.user).be.eql(meta.user)
+          should(info.apiCalls).be.equal(2)
+          should(info.newerTweetDate).be.eql(meta.newerTweetDate)
+          should(info.olderTweetDate).be.eql(meta.olderTweetDate)
+          done()
+        })
     })
 
     it('limit how many tweets to retrieve in days', function (done) {
@@ -94,31 +94,31 @@ describe('fetch-timeline', function () {
       const stream = fetchTimeline(params, opts)
 
       stream
-      .on('error', done)
-      .on('data', function (tweet) {
-        if (count === 0) {
-          meta.newerTweetDate = new Date(tweet.created_at)
-        }
+        .on('error', done)
+        .on('data', function (tweet) {
+          if (count === 0) {
+            meta.newerTweetDate = new Date(tweet.created_at)
+          }
 
-        ++count
-        meta.user = tweet.user
-        meta.olderTweetDate = new Date(tweet.created_at)
-      })
-      .on('info', function (info) {
-        should(info.user).be.eql(meta.user)
-        should(info.newerTweetDate).be.eql(meta.newerTweetDate)
-        should(info.olderTweetDate).be.eql(meta.olderTweetDate)
-        should(info.apiCalls).be.equal(1)
+          ++count
+          meta.user = tweet.user
+          meta.olderTweetDate = new Date(tweet.created_at)
+        })
+        .on('info', function (info) {
+          should(info.user).be.eql(meta.user)
+          should(info.newerTweetDate).be.eql(meta.newerTweetDate)
+          should(info.olderTweetDate).be.eql(meta.olderTweetDate)
+          should(info.apiCalls).be.equal(1)
 
-        const diffDays = differenceInDays(
-          info.timestamp,
-          info.olderTweetDate
-        )
+          const diffDays = differenceInDays(
+            info.timestamp,
+            info.olderTweetDate
+          )
 
-        should(diffDays + 1).be.equal(limitDays)
+          should(diffDays + 1).be.equal(limitDays)
 
-        done()
-      })
+          done()
+        })
     })
 
     it('combine limit and limitDays', function (done) {
@@ -142,31 +142,31 @@ describe('fetch-timeline', function () {
       const stream = fetchTimeline(params, opts)
 
       stream
-      .on('error', done)
-      .on('data', function (tweet) {
-        if (count === 0) {
-          meta.newerTweetDate = new Date(tweet.created_at)
-        }
+        .on('error', done)
+        .on('data', function (tweet) {
+          if (count === 0) {
+            meta.newerTweetDate = new Date(tweet.created_at)
+          }
 
-        ++count
-        meta.user = tweet.user
-        meta.olderTweetDate = new Date(tweet.created_at)
-      })
-      .on('info', function (info) {
-        should(info.user).be.eql(meta.user)
-        should(info.apiCalls).be.equal(1)
-        should(info.newerTweetDate).be.eql(meta.newerTweetDate)
-        should(info.olderTweetDate).be.eql(meta.olderTweetDate)
+          ++count
+          meta.user = tweet.user
+          meta.olderTweetDate = new Date(tweet.created_at)
+        })
+        .on('info', function (info) {
+          should(info.user).be.eql(meta.user)
+          should(info.apiCalls).be.equal(1)
+          should(info.newerTweetDate).be.eql(meta.newerTweetDate)
+          should(info.olderTweetDate).be.eql(meta.olderTweetDate)
 
-        const diffDays = differenceInDays(
-          info.timestamp,
-          info.olderTweetDate
-        )
+          const diffDays = differenceInDays(
+            info.timestamp,
+            info.olderTweetDate
+          )
 
-        should(diffDays + 1).be.equal(limitDays)
-        should(info.count <= limit).be.true()
-        done()
-      })
+          should(diffDays + 1).be.equal(limitDays)
+          should(info.count <= limit).be.true()
+          done()
+        })
     })
   })
 })

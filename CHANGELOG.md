@@ -1,3 +1,18 @@
+## 1.2.0 (2020-01-20)
+
+* build: update dependencies ([9eeec16](https://github.com/kikobeats/fetch-timeline/commit/9eeec16))
+* fix(package): update date-fns to version 1.30.0 ([b8c9dec](https://github.com/kikobeats/fetch-timeline/commit/b8c9dec))
+* fix(package): update debug to version 3.2.1 ([2096da5](https://github.com/kikobeats/fetch-timeline/commit/2096da5))
+* fix(package): update debug to version 4.0.1 ([d396e70](https://github.com/kikobeats/fetch-timeline/commit/d396e70))
+* fix(package): update debug to version 4.1.0 ([4bbda1a](https://github.com/kikobeats/fetch-timeline/commit/4bbda1a))
+* Fix identation ([a290202](https://github.com/kikobeats/fetch-timeline/commit/a290202))
+* Update package.json ([af97851](https://github.com/kikobeats/fetch-timeline/commit/af97851))
+* Update README.md ([58e61b8](https://github.com/kikobeats/fetch-timeline/commit/58e61b8))
+* Update README.md ([084f494](https://github.com/kikobeats/fetch-timeline/commit/084f494))
+* docs(readme): add Greenkeeper badge ([6dc2c2b](https://github.com/kikobeats/fetch-timeline/commit/6dc2c2b))
+
+
+
 <a name="1.1.4"></a>
 ## 1.1.4 (2017-11-07)
 

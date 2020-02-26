@@ -25,7 +25,7 @@
     "user"
   ],
   "dependencies": {
-    "date-fns": "~2.9.0",
+    "date-fns": "~2.10.0",
     "debug": "~4.1.1",
     "from2": "~2.3.0",
     "lodash": "~4.17.15",

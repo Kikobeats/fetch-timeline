@@ -2,7 +2,7 @@
 
 const should = require('should')
 
-const differenceInDays = require('date-fns/difference_in_days')
+const differenceInDays = require('date-fns/differenceInDays')
 const twitterClient = require('../lib/twitter-client')
 const fetchTimeline = require('..')
 

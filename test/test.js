@@ -47,7 +47,7 @@ describe('fetch-timeline', function () {
         limit
       }
 
-      let meta = {}
+      const meta = {}
       let count = 0
 
       const stream = fetchTimeline(params, opts)
@@ -88,7 +88,7 @@ describe('fetch-timeline', function () {
         limitDays
       }
 
-      let meta = {}
+      const meta = {}
       let count = 0
 
       const stream = fetchTimeline(params, opts)
@@ -110,10 +110,7 @@ describe('fetch-timeline', function () {
           should(info.olderTweetDate).be.eql(meta.olderTweetDate)
           should(info.apiCalls).be.equal(1)
 
-          const diffDays = differenceInDays(
-            info.timestamp,
-            info.olderTweetDate
-          )
+          const diffDays = differenceInDays(info.timestamp, info.olderTweetDate)
 
           should(diffDays + 1).be.equal(limitDays)
 
@@ -136,7 +133,7 @@ describe('fetch-timeline', function () {
         limitDays
       }
 
-      let meta = {}
+      const meta = {}
       let count = 0
 
       const stream = fetchTimeline(params, opts)
@@ -158,10 +155,7 @@ describe('fetch-timeline', function () {
           should(info.newerTweetDate).be.eql(meta.newerTweetDate)
           should(info.olderTweetDate).be.eql(meta.olderTweetDate)
 
-          const diffDays = differenceInDays(
-            info.timestamp,
-            info.olderTweetDate
-          )
+          const diffDays = differenceInDays(info.timestamp, info.olderTweetDate)
 
           should(diffDays + 1).be.equal(limitDays)
           should(info.count <= limit).be.true()
